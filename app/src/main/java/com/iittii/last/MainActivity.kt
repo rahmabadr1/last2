@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportFragmentManager.beginTransaction().replace(R.id.containerA,SigninFragment()).commit()
         fireBse()
     }
 
@@ -23,20 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun signIn(view: View) {
-        val email=binding.etemail.text.toString()
-        val password =binding.etpassword.text.toString()
-        mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
-            it?.let {
-                startActivity(Intent(this,SecondActivity::class.java))
-            }
-        }.addOnFailureListener {
-            Toast.makeText(this,"${it.message}",Toast.LENGTH_LONG).show()
-        }
-    }
 
-    fun signUp(view: View) {
-        startActivity(Intent(this,RegisterActivity::class.java))
-    }
+
 
 }
