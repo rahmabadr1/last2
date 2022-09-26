@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">last</string>
+    <string name="user_name">user_name</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+    <string name="confirmpassword">confirm password</string>
+</resources>
