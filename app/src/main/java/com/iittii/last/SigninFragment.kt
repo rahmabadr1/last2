@@ -41,6 +41,11 @@ class SigninFragment : Fragment() {
     private fun signin() {
         val email=binding.etemail.text.toString()
         val password =binding.etpassword.text.toString()
+        if(email.isEmpty()){
+            Toast.makeText(context,"please enter your email",Toast.LENGTH_LONG).show()
+        }else if(password.isEmpty()){
+            Toast.makeText(context,"please enter your password",Toast.LENGTH_LONG).show()
+        }else{
         mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
             it?.let {
                 startActivity(Intent(context,SecondActivity::class.java))
@@ -48,7 +53,7 @@ class SigninFragment : Fragment() {
         }.addOnFailureListener {
             Toast.makeText(context,"${it.message}", Toast.LENGTH_LONG).show()
         }
-    }
+    }}
 
     private fun fireBse() {
         mAuth= FirebaseAuth.getInstance()

@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:background="@color/gray"
             android:hint="@string/email"
-            android:inputType="textPassword"/>
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
