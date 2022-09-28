@@ -1,4 +1,4 @@
-package com.iittii.last.remote
+package com.iittii.last.datasource.remote
 
 import com.iittii.last.model.FoodRecipe
 import retrofit2.Response

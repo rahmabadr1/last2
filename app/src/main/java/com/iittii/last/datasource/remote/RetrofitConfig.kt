@@ -1,4 +1,4 @@
-package com.iittii.last.remote
+package com.iittii.last.datasource.remote
 
 import com.iittii.task5.util.Constants
 import retrofit2.Retrofit

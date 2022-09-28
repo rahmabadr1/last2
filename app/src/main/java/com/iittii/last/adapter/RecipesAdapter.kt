@@ -1,5 +1,6 @@
 package com.iittii.last.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +10,7 @@ import com.iittii.last.model.Result
 import com.iittii.task5.util.Constants
 import com.squareup.picasso.Picasso
 
-class RecipesAdapter(private val onClickInterface: OnClickInterface) :
+ class RecipesAdapter(private val onClickInterface: OnClickInterface)  :
     RecyclerView.Adapter<RecipesAdapter.RecipesHolder>() {
 
     private var recipes = emptyList<Result>()
