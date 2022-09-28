@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iittii.last.R
+import com.iittii.last.RecipeDetailsFragment
 import com.iittii.last.adapter.OnClickInterface
 import com.iittii.last.adapter.RecipesAdapter
 import com.iittii.last.databinding.FragmentRecipesBinding
@@ -42,6 +43,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener,
         adaptar = RecipesAdapter(object : OnClickInterface {
             override fun onClick(result: Result) {
                 // navigate to recipe details fragment - with result
+ activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.containerB,RecipeDetailsFragment.newInstance(result))?.commit()
             }
         })
         val linearlayoutmanager = LinearLayoutManager(context)
