@@ -1,13 +1,14 @@
 package com.iittii.last.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.iittii.last.databinding.RecipesRowLayoutBinding
 import com.iittii.last.model.FoodRecipe
 import com.iittii.last.model.Result
-import com.iittii.task5.util.Constants
+import com.iittii.last.util.Constants
 import com.squareup.picasso.Picasso
 
  class RecipesAdapter(private val onClickInterface: OnClickInterface)  :
@@ -18,7 +19,11 @@ import com.squareup.picasso.Picasso
     inner class RecipesHolder(private val binding: RecipesRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(result: Result) {
-            Picasso.get().load(Constants.BASE_IMAGE_URL + result.image).into(binding.recipeImage)
+            Picasso.get().load(result.image).into(binding.recipeImage)
+            binding.recipeTextView.text = result.title
+            binding.likesTextView.text = result.aggregateLikes.toString()
+            binding.clockTextView.text = result.readyInMinutes.toString()
+            binding.leafTextView.text = result.vegan.toString()
 
             binding.root.setOnClickListener {
                 onClickInterface.onClick(result)
