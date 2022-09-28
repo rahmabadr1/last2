@@ -55,6 +55,7 @@ class SigninFragment : Fragment() {
             mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
                 it?.let {
                     startActivity(Intent(context, HomeActivity::class.java))
+                    (activity as MainActivity).finish()
                 }
             }.addOnFailureListener {
                 Toast.makeText(context, "${it.message}", Toast.LENGTH_LONG).show()

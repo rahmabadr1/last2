@@ -43,6 +43,7 @@ class RegisterFragment : Fragment() {
                 it?.let {
                     Toast.makeText(context, "Account created", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(context, HomeActivity::class.java))
+                    (activity as MainActivity).finish()
                 }
             }.addOnFailureListener {
                 Toast.makeText(context, "${it.message}", Toast.LENGTH_LONG).show()

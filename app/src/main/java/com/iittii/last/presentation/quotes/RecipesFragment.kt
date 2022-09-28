@@ -1,6 +1,7 @@
 package com.iittii.last.presentation.quotes
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
@@ -43,7 +44,8 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener,
         adaptar = RecipesAdapter(object : OnClickInterface {
             override fun onClick(result: Result) {
                 // navigate to recipe details fragment - with result
- activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.containerB,RecipeDetailsFragment.newInstance(result))?.commit()
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.containerB, RecipeDetailsFragment().apply { detail = result })?.addToBackStack(null)?.commit()
             }
         })
         val linearlayoutmanager = LinearLayoutManager(context)
@@ -60,6 +62,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener,
     private fun observeViewModel() {
 //        viewModel.qoutesLiveData.observe(context){
         viewModel.qoutesLiveData.observe(viewLifecycleOwner) {
+            Log.d("TAG", "observeViewModel: $it")
             adaptar.setData(it)
             binding.progressBar.isVisible = false
         }

@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.iittii.last.databinding.FragmentDetailsBinding
 import com.iittii.last.model.Result
-import com.iittii.last.util.Constants
 import com.squareup.picasso.Picasso
+import org.jsoup.Jsoup
 
 class RecipeDetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
+
+    lateinit var detail: Result
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,26 +26,35 @@ class RecipeDetailsFragment : Fragment() {
     }
 
     private fun details() {
-        arguments?.let {
-        val detail= it.get("result") as Result
-            Picasso.get().load(detail.image).into(binding.mainImageView)
-            binding.titleTv.text=detail.title
-            binding.likesTextView.text= detail.aggregateLikes.toString()
-            binding.clockTextView.text=detail.readyInMinutes.toString()
+        Picasso.get().load(detail.image).into(binding.mainImageView)
+        binding.titleTv.text = detail.title
+        binding.likesTextView.text = detail.aggregateLikes.toString()
+        binding.clockTextView.text = detail.readyInMinutes.toString()
 
+        binding.summaryTv.text = Jsoup.parse(detail.summary).text()
 
-
+        if (detail.vegetarian) {
+            binding.vegetarianIv.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
+            binding.vegetarianTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+        }
+        if (detail.vegan) {
+            binding.veganIv.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
+            binding.veganTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+        }
+        if (detail.glutenFree) {
+            binding.glutenFreeIv.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
+            binding.glutenFreeTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+        }
+        if (detail.dairyFree) { binding.diaryFreeIv.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
+            binding.diaryFreeTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+        }
+        if (detail.veryHealthy) {
+            binding.healthyIv.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
+            binding.healthyTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+        }
+        if (detail.cheap) {
+            binding.cheapIv.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
+            binding.cheapTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
         }
     }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(result: Result) =
-            RecipeDetailsFragment().apply {
-                arguments?.apply {
-                    putString("result", result.toString())
-
-                }
-            }
-    }
-     }
+}

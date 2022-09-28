@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
     private fun login() {
         if(emaill.isEmpty()){
         supportFragmentManager.beginTransaction().replace(R.id.containerA, SigninFragment()).commit()
-            finish()
         }else{
             startActivity(Intent(this,HomeActivity::class.java))
+            finish()
         }
     }
 
