@@ -10,22 +10,25 @@ import com.iittii.last.util.Constants.QUERY_ADD_RECIPE_INFORMATION
 import com.iittii.last.util.Constants.QUERY_API_KEY
 import com.iittii.last.util.Constants.QUERY_FILL_INGREDIENTS
 import com.iittii.last.util.Constants.QUERY_NUMBER
+import com.iittii.last.util.Constants.QUERY_SEARCH
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class QutoseViewModel :ViewModel() {
-    val qoutoseRepo=Repo()
+class RecipeViewModel :ViewModel() {
+    private val qoutoseRepo=Repo()
     val qoutesLiveData= MutableLiveData<FoodRecipe>()
-    fun getQuotes(){
+
+    fun getRecipes(searchQuery: String? = null){
         viewModelScope.launch(Dispatchers.Main) {
-            qoutoseRepo.getRecipes(applyQueries())?.let{
+            qoutoseRepo.getRecipes(applyQueries(searchQuery))?.let{
                 qoutesLiveData.value= it
             }
         }
     }
 
-    fun applyQueries(): HashMap<String, String> {
+    private fun applyQueries(searchQuery: String? = null): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
+        searchQuery?.let { queries[QUERY_SEARCH] = searchQuery }
         queries[QUERY_NUMBER] = "50"
         queries[QUERY_API_KEY] = API_KEY
         queries[QUERY_ADD_RECIPE_INFORMATION] = "true"

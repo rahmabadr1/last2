@@ -1,29 +1,35 @@
 package com.iittii.last.presentation.quotes
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.iittii.last.R
 import com.iittii.last.adapter.OnClickInterface
 import com.iittii.last.adapter.RecipesAdapter
 import com.iittii.last.databinding.FragmentRecipesBinding
 import com.iittii.last.model.Result
 
-class RecipesFragment : Fragment() {
+class RecipesFragment : Fragment(), SearchView.OnQueryTextListener,
+    SearchView.OnCloseListener {
+
     private lateinit var adaptar: RecipesAdapter
     private lateinit var binding: FragmentRecipesBinding
-    private lateinit var viewModel: QutoseViewModel
+    private lateinit var viewModel: RecipeViewModel
+    private lateinit var searchView: SearchView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRecipesBinding.inflate(inflater)
-        viewModel = ViewModelProvider(this)[QutoseViewModel::class.java]
+
+        setHasOptionsMenu(true)
+
+        viewModel = ViewModelProvider(this)[RecipeViewModel::class.java]
         initviews()
         observeViewModel()
         setuprv()
@@ -60,6 +66,39 @@ class RecipesFragment : Fragment() {
     private fun initviews() {
         binding.progressBar.isVisible = true
 //        ViewModel.getQuotes()
-        viewModel.getQuotes()
+        viewModel.getRecipes()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.action_bar_menu, menu)
+
+        val search = menu.findItem(R.id.menu_search)
+
+        searchView = search.actionView as SearchView
+        searchView.isSubmitButtonEnabled = true
+        searchView.setOnQueryTextListener(this)
+        searchView.setOnCloseListener(this)
+
+    }
+
+    private fun searchRecipes(query: String?) {
+        query?.let {
+            viewModel.getRecipes(it)
+        }
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        searchRecipes(query)
+        return true
+    }
+
+
+    override fun onQueryTextChange(p0: String?): Boolean {
+        return true
+    }
+
+    override fun onClose(): Boolean {
+        searchView.onActionViewCollapsed()
+        return true
     }
 }
