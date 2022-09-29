@@ -18,7 +18,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-
     private fun navigateToRecipeFragment() {
         supportFragmentManager.beginTransaction().replace(R.id.containerB, RecipesFragment())
             .commit()

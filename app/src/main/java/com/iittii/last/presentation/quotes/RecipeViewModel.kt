@@ -1,9 +1,12 @@
 package com.iittii.last.presentation.quotes
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.iittii.last.datasource.local.RecipesEntity
 import com.iittii.last.model.FoodRecipe
+import com.iittii.last.model.Result
 import com.iittii.last.repository.Repo
 import com.iittii.last.util.Constants.API_KEY
 import com.iittii.last.util.Constants.QUERY_ADD_RECIPE_INFORMATION
@@ -14,14 +17,30 @@ import com.iittii.last.util.Constants.QUERY_SEARCH
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RecipeViewModel :ViewModel() {
-    private val qoutoseRepo=Repo()
-    val qoutesLiveData= MutableLiveData<FoodRecipe>()
+class RecipeViewModel : ViewModel() {
+    private val qoutoseRepo = Repo()
+    val qoutesLiveData = MutableLiveData<FoodRecipe>()
 
-    fun getRecipes(searchQuery: String? = null){
+    fun insertRecipe(result: Result) {
+        viewModelScope.launch(Dispatchers.IO) {
+            qoutoseRepo.saveRecipe(result)
+        }
+    }
+
+    fun deleteRecipe(result: Result) {
+        viewModelScope.launch(Dispatchers.IO) {
+            qoutoseRepo.deleteRecipe(result)
+        }
+    }
+
+    fun getFavouriteRecipes():LiveData<List<RecipesEntity>> {
+         return qoutoseRepo.getFavouriteRecipes()
+    }
+
+    fun getRecipes(searchQuery: String? = null) {
         viewModelScope.launch(Dispatchers.Main) {
-            qoutoseRepo.getRecipes(applyQueries(searchQuery))?.let{
-                qoutesLiveData.value= it
+            qoutoseRepo.getRecipes(applyQueries(searchQuery))?.let {
+                qoutesLiveData.value = it
             }
         }
     }

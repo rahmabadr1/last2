@@ -1,20 +1,18 @@
 package com.iittii.last.adapter
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.iittii.last.R
 import com.iittii.last.databinding.RecipesRowLayoutBinding
-import com.iittii.last.model.FoodRecipe
 import com.iittii.last.model.Result
-import com.iittii.last.util.Constants
 import com.squareup.picasso.Picasso
 
- class RecipesAdapter(private val onClickInterface: OnClickInterface)  :
+class RecipesAdapter(private val onClickInterface: OnClickInterface) :
     RecyclerView.Adapter<RecipesAdapter.RecipesHolder>() {
 
     private var recipes = emptyList<Result>()
+    private var favList = emptyList<Int>()
 
     inner class RecipesHolder(private val binding: RecipesRowLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -25,8 +23,16 @@ import com.squareup.picasso.Picasso
             binding.clockTextView.text = result.readyInMinutes.toString()
             binding.leafTextView.text = result.vegan.toString()
 
+            if (favList.contains(result.id))
+                binding.favImage.setImageResource(R.drawable.ic_favorite)
+            else
+                binding.favImage.setImageResource(R.drawable.ic_not_favorite)
+
             binding.root.setOnClickListener {
                 onClickInterface.onClick(result)
+            }
+            binding.favBtn.setOnClickListener {
+                onClickInterface.onFavouriteClicked(!favList.contains(result.id), result)
             }
         }
     }
@@ -44,8 +50,13 @@ import com.squareup.picasso.Picasso
 
     override fun getItemCount(): Int = recipes.size
 
-    fun setData(data: FoodRecipe) {
-        recipes = data.results
+    fun setData(data: List<Result>) {
+        recipes = data
+        notifyDataSetChanged()
+    }
+
+    fun setFav(data: List<Int>) {
+        favList = data
         notifyDataSetChanged()
     }
 }
