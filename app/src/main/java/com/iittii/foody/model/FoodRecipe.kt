@@ -1,6 +1,5 @@
-package com.iittii.last.model
+package com.iittii.foody.model
 
-import android.os.Parcelable
 import java.io.Serializable
 
 data class FoodRecipe(

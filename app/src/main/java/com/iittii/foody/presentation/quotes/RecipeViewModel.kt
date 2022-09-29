@@ -1,16 +1,16 @@
-package com.iittii.last.presentation.quotes
+package com.iittii.foody.presentation.quotes
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.iittii.last.model.FoodRecipe
-import com.iittii.last.repository.Repo
-import com.iittii.last.util.Constants.API_KEY
-import com.iittii.last.util.Constants.QUERY_ADD_RECIPE_INFORMATION
-import com.iittii.last.util.Constants.QUERY_API_KEY
-import com.iittii.last.util.Constants.QUERY_FILL_INGREDIENTS
-import com.iittii.last.util.Constants.QUERY_NUMBER
-import com.iittii.last.util.Constants.QUERY_SEARCH
+import com.iittii.foody.model.FoodRecipe
+import com.iittii.foody.repository.Repo
+import com.iittii.foody.util.Constants.API_KEY
+import com.iittii.foody.util.Constants.QUERY_ADD_RECIPE_INFORMATION
+import com.iittii.foody.util.Constants.QUERY_API_KEY
+import com.iittii.foody.util.Constants.QUERY_FILL_INGREDIENTS
+import com.iittii.foody.util.Constants.QUERY_NUMBER
+import com.iittii.foody.util.Constants.QUERY_SEARCH
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.iittii.last
+package com.iittii.foody
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import com.iittii.last.databinding.FragmentRegisterBinding
+import com.iittii.foody.databinding.FragmentRegisterBinding
 
 
 class RegisterFragment : Fragment() {

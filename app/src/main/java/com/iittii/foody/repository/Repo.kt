@@ -1,8 +1,8 @@
-package com.iittii.last.repository
+package com.iittii.foody.repository
 
 import android.util.Log
-import com.iittii.last.datasource.remote.RetrofitConfig
-import com.iittii.last.model.FoodRecipe
+import com.iittii.foody.datasource.remote.RetrofitConfig
+import com.iittii.foody.model.FoodRecipe
 
 class Repo {
     private val apiService by lazy { RetrofitConfig.getServiceInstance() }

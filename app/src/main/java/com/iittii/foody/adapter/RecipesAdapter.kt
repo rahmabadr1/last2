@@ -1,14 +1,11 @@
-package com.iittii.last.adapter
+package com.iittii.foody.adapter
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.iittii.last.databinding.RecipesRowLayoutBinding
-import com.iittii.last.model.FoodRecipe
-import com.iittii.last.model.Result
-import com.iittii.last.util.Constants
+import com.iittii.foody.databinding.RecipesRowLayoutBinding
+import com.iittii.foody.model.FoodRecipe
+import com.iittii.foody.model.Result
 import com.squareup.picasso.Picasso
 
  class RecipesAdapter(private val onClickInterface: OnClickInterface)  :

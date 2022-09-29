@@ -1,11 +1,12 @@
-package com.iittii.last
+package com.iittii.foody
 
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.iittii.last.databinding.ActivityMainBinding
+import com.iittii.foody.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
     private var sharedpref:SharedPreferences?=null

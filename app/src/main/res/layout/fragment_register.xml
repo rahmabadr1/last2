@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity"
-    android:background="@color/whitee">
+    android:background="@color/ff"
+    >
     <com.google.android.material.textfield.TextInputLayout
 
         android:id="@+id/textInputLayout1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="210dp"
-        android:background="@color/gray"
+        android:background="@color/rr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,7 +22,7 @@
             android:id="@+id/etemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/gray"
+            android:background="@color/rr"
             android:hint="@string/email"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="12dp"
-        android:background="@color/gray"
+        android:background="@color/rr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
             android:id="@+id/etpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/gray"
+            android:background="@color/rr"
             android:hint="@string/password"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -55,19 +55,19 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:background="@color/gray"
+        android:background="@color/rr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
         app:passwordToggleEnabled="true"
-        app:startIconDrawable="@drawable/open">
+        app:startIconDrawable="@drawable/lock">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etconfirmpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/gray"
+            android:background="@color/rr"
             android:hint="@string/confirmpassword"
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -79,10 +79,10 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="43dp"
         android:layout_marginEnd="100dp"
-        android:background="@color/gray"
-        android:text="Sign up"
+        android:background="@color/rr"
+        android:text="Creat"
         android:textAllCaps="false"
-        app:backgroundTint="@color/gray"
+        app:backgroundTint="@color/rr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"

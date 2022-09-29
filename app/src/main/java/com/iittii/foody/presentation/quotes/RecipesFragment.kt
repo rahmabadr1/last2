@@ -1,4 +1,4 @@
-package com.iittii.last.presentation.quotes
+package com.iittii.foody.presentation.quotes
 
 import android.os.Bundle
 import android.util.Log
@@ -9,12 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.iittii.last.R
-import com.iittii.last.RecipeDetailsFragment
-import com.iittii.last.adapter.OnClickInterface
-import com.iittii.last.adapter.RecipesAdapter
-import com.iittii.last.databinding.FragmentRecipesBinding
-import com.iittii.last.model.Result
+import com.iittii.foody.R
+import com.iittii.foody.RecipeDetailsFragment
+import com.iittii.foody.adapter.OnClickInterface
+import com.iittii.foody.adapter.RecipesAdapter
+import com.iittii.foody.databinding.FragmentRecipesBinding
+import com.iittii.foody.model.Result
+
 
 class RecipesFragment : Fragment(), SearchView.OnQueryTextListener,
     SearchView.OnCloseListener {
