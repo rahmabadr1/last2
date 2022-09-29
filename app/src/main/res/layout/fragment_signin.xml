@@ -4,32 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@mipmap/food"
     tools:context=".MainActivity"
-    android:backgroundTint="@color/ff">
+    >
 
-
-    <Button
-        android:id="@+id/btnsignin"
-        android:layout_width="wrap_content"
-        android:layout_height="37dp"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="162dp"
-        android:background="@color/rr"
-        android:text="Login"
-        android:textAllCaps="false"
-        app:backgroundTint="@color/rr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <Button
         android:id="@+id/btnsignup"
         android:layout_width="wrap_content"
         android:layout_height="37dp"
         android:layout_marginTop="114dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="218dp"
         android:background="@color/rr"
         android:text="Sign up"
@@ -37,17 +22,19 @@
         app:backgroundTint="@color/rr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+        app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textfield.TextInputLayout
 
         android:id="@+id/textInputLayout1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="217dp"
+        android:layout_marginTop="272dp"
 
         android:background="@color/rr"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/creat">
@@ -67,10 +54,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
 
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="16dp"
 
         android:background="@color/rr"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout1"
         app:passwordToggleEnabled="true"
@@ -93,8 +81,8 @@
         android:layout_marginEnd="24dp"
         android:text="Don’t have account?"
         android:textAllCaps="false"
-        android:textColor="@color/darkGray"
-        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toStartOf="@+id/btnsignup"
         app:layout_constraintStart_toStartOf="parent" />
@@ -108,11 +96,26 @@
         android:layout_marginBottom="218dp"
         android:text="Creat one"
         android:textAllCaps="false"
-        android:textColor="@color/darkGray"
-        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnsignup"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnsignin"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="160dp"
+        android:background="@color/rr"
+        android:text="Login"
+        android:textAllCaps="false"
+        app:backgroundTint="@color/rr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
