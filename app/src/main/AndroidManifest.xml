@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.iittii.last">
+    package="com.iittii.foody">
 <uses-permission android:name="android.permission.INTERNET">
 </uses-permission>
     <application
@@ -9,17 +9,17 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/app"
+        android:label="foody"
+        android:roundIcon="@mipmap/app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Last"
         tools:targetApi="31">
         <activity
-            android:name=".HomeActivity"
+            android:name="com.iittii.foody.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.iittii.foody.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

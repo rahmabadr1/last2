@@ -1,4 +1,4 @@
-package com.iittii.last
+package com.iittii.foody
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.iittii.last.databinding.FragmentDetailsBinding
-import com.iittii.last.model.Result
+import com.iittii.foody.databinding.FragmentDetailsBinding
+import com.iittii.foody.model.Result
 import com.squareup.picasso.Picasso
 import org.jsoup.Jsoup
 
@@ -22,6 +22,7 @@ class RecipeDetailsFragment : Fragment() {
     ): View {
         binding = FragmentDetailsBinding.inflate(inflater)
         details()
+
         return binding.root
     }
 
