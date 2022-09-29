@@ -1,6 +1,6 @@
-package com.iittii.foody.datasource.remote
+package com.iittii.last.datasource.remote
 
-import com.iittii.foody.util.Constants
+import com.iittii.last.util.Constants
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create

@@ -9,8 +9,6 @@ import com.iittii.last.datasource.local.resultToEntity
 import com.iittii.last.datasource.remote.RetrofitConfig
 import com.iittii.last.model.FoodRecipe
 import com.iittii.last.model.Result
-import kotlinx.coroutines.flow.first
-import kotlin.math.log
 
 class Repo {
     private val apiService by lazy { RetrofitConfig.getServiceInstance() }

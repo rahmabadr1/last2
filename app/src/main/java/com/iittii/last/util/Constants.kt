@@ -1,4 +1,4 @@
-package com.iittii.foody.util
+package com.iittii.last.util
 
 object Constants {
     const val API_KEY = "0a190079115f4f5a98fdc432916a66e5"

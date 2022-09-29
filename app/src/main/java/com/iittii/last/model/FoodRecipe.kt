@@ -1,4 +1,4 @@
-package com.iittii.foody.model
+package com.iittii.last.model
 
 import java.io.Serializable
 

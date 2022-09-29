@@ -1,20 +1,23 @@
-package com.iittii.last
+package com.iittii.last.presentation.quotes
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.iittii.last.R
+import com.iittii.last.RecipeDetailsFragment
 import com.iittii.last.adapter.OnClickInterface
 import com.iittii.last.adapter.RecipesAdapter
 import com.iittii.last.databinding.FragmentRecipesBinding
-import com.iittii.last.datasource.local.entityToResult
 import com.iittii.last.model.Result
-import com.iittii.last.presentation.quotes.RecipeViewModel
 
-class FavouriteFragment : Fragment(){
+class RecipesFragment : Fragment(), SearchView.OnQueryTextListener,
+    SearchView.OnCloseListener {
 
     private lateinit var adaptar: RecipesAdapter
     private lateinit var binding: FragmentRecipesBinding
@@ -26,21 +29,31 @@ class FavouriteFragment : Fragment(){
     ): View {
         binding = FragmentRecipesBinding.inflate(inflater)
 
+        setHasOptionsMenu(true)
+
         viewModel = ViewModelProvider(this)[RecipeViewModel::class.java]
         setuprv()
+        initviews()
+        observeViewModel()
         getFavouriteRecipes()
-
         return binding.root
+    }
+
+    private fun getFavouriteRecipes() {
+        viewModel.getFavouriteRecipes().observe(viewLifecycleOwner) {
+            val favList = it.map {
+                it.id
+            }
+            adaptar.setFav(favList)
+        }
     }
 
     private fun setuprv() {
         adaptar = RecipesAdapter(object : OnClickInterface {
             override fun onClick(result: Result) {
                 activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.containerB, RecipeDetailsFragment().apply { detail = result })
-                    ?.addToBackStack(null)?.commit()
+                    ?.replace(R.id.containerB, RecipeDetailsFragment().apply { detail = result })?.addToBackStack(null)?.commit()
             }
-
             override fun onFavouriteClicked(isFav: Boolean, result: Result) {
                 if(isFav) {
                     viewModel.insertRecipe(result)
@@ -62,17 +75,51 @@ class FavouriteFragment : Fragment(){
         binding.recipeRv.adapter = adaptar
     }
 
-
-    private fun getFavouriteRecipes() {
-        viewModel.getFavouriteRecipes().observe(viewLifecycleOwner) {
-            val recipeList = it.map {
-                entityToResult(it)
-            }
-
-            val favIdList = recipeList.map { it.id }
-
-            adaptar.setData(recipeList)
-            adaptar.setFav(favIdList)
+    private fun observeViewModel() {
+//        viewModel.qoutesLiveData.observe(context){
+        viewModel.qoutesLiveData.observe(viewLifecycleOwner) {
+            Log.d("TAG", "observeViewModel: $it")
+            adaptar.setData(it.results)
+            binding.progressBar.isVisible = false
         }
+    }
+
+    private fun initviews() {
+        binding.progressBar.isVisible = true
+//        ViewModel.getQuotes()
+        viewModel.getRecipes()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.action_bar_menu, menu)
+
+        val search = menu.findItem(R.id.menu_search)
+
+        searchView = search.actionView as SearchView
+        searchView.isSubmitButtonEnabled = true
+        searchView.setOnQueryTextListener(this)
+        searchView.setOnCloseListener(this)
+
+    }
+
+    private fun searchRecipes(query: String?) {
+        query?.let {
+            viewModel.getRecipes(it)
+        }
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        searchRecipes(query)
+        return true
+    }
+
+
+    override fun onQueryTextChange(p0: String?): Boolean {
+        return true
+    }
+
+    override fun onClose(): Boolean {
+        searchView.onActionViewCollapsed()
+        return true
     }
 }

@@ -1,4 +1,4 @@
-package com.iittii.foody
+package com.iittii.last
 
 import org.junit.Test
 
